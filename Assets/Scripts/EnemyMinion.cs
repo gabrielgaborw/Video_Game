@@ -8,7 +8,7 @@ public class EnemyMinion : MonoBehaviour
     public float health = 2000f;
 
     public float lastAttack;
-    public float attackDelay = 20f;
+    public float attackDelay = 1f;
 
     // Start is called before the first frame update
     void Start()

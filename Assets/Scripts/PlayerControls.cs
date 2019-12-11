@@ -6,13 +6,12 @@ public class PlayerControls : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject bullet;
-    public GameObject bullet2;
     private float health = 5000f;
     private Vector3 inputs = Vector3.zero;
 
     public float lastAttack;
     public float attackDelay = 0.3f;
-    public float speed = 20f;
+    public float speed = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +24,9 @@ public class PlayerControls : MonoBehaviour
     {
         //------------MOVEMENT---------------
         inputs = Vector3.zero;
-
         inputs.x = Input.GetAxis("Horizontal");
         inputs.y = 0;
         inputs.z = Input.GetAxis("Vertical");
-
-        
         //------------------------------------
 
 
