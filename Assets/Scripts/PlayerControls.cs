@@ -37,11 +37,11 @@ public class PlayerControls : MonoBehaviour
             {
                 lastAttack = Time.time;
 
-                GameObject projectile = Instantiate(bullet, transform.TransformPoint(0.4f, 0f, 1f), Quaternion.identity) as GameObject;
-                projectile.GetComponent<Rigidbody>().AddForce(0, 0, 2000 * Time.deltaTime, ForceMode.VelocityChange);
+                GameObject projectile = Instantiate(bullet, transform.TransformPoint(2f, 0f, 8f), Quaternion.identity) as GameObject;
+                projectile.GetComponent<Rigidbody>().AddForce(0, 0, 2500 * Time.deltaTime, ForceMode.VelocityChange);
 
-                GameObject projectile2 = Instantiate(bullet, transform.TransformPoint(-0.4f, 0f, 1f), Quaternion.identity) as GameObject;
-                projectile2.GetComponent<Rigidbody>().AddForce(0, 0, 2000 * Time.deltaTime, ForceMode.VelocityChange);
+                GameObject projectile2 = Instantiate(bullet, transform.TransformPoint(-2f, 0f, 8f), Quaternion.identity) as GameObject;
+                projectile2.GetComponent<Rigidbody>().AddForce(0, 0, 2500 * Time.deltaTime, ForceMode.VelocityChange);
             }
         }
         //------------------------------------

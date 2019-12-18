@@ -24,7 +24,7 @@ public class EnemyMinion : MonoBehaviour
             lastAttack = Time.time;
 
             GameObject projectile = Instantiate(enemyAttack, transform.TransformPoint(0f, 0f, -1f), Quaternion.identity) as GameObject;
-            projectile.GetComponent<Rigidbody>().AddForce(0, 0, -2000 * Time.deltaTime, ForceMode.VelocityChange);
+            projectile.GetComponent<Rigidbody>().AddForce(0, 0, -1500 * Time.deltaTime, ForceMode.VelocityChange);
         }
 
         if (health <= 0)
