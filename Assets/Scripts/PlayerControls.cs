@@ -6,17 +6,18 @@ public class PlayerControls : MonoBehaviour
 {
     public Rigidbody rb;
     public GameObject bullet;
-    private float health = 5000f;
+    private float health = 100f;
     private Vector3 inputs = Vector3.zero;
+    public GameObject explosion;
 
-    public float lastAttack;
+    private float lastAttack;
     public float attackDelay = 0.3f;
     public float speed = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        explosion.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,8 +47,15 @@ public class PlayerControls : MonoBehaviour
         }
         //------------------------------------
 
+        FindObjectOfType<Healthbar>().GetHealth(health);
+
         if (health <= 0)
+        {
+            explosion.transform.localPosition = gameObject.transform.localPosition;
+            explosion.SetActive(true);
             Destroy(gameObject);
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     private void FixedUpdate()
@@ -58,6 +66,8 @@ public class PlayerControls : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Bullet2(Clone)")
-            health = health - 500f;
+            health = health - 10f;
+        if (collision.gameObject.name == "Enemy(Clone)")
+            health = 0;
     }
 }

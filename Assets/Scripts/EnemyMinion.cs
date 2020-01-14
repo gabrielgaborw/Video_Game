@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMinion : MonoBehaviour
 {
     public GameObject enemyAttack;
+    public GameObject explosion;
     public float health = 2000f;
 
     public float lastAttack;
@@ -13,7 +14,7 @@ public class EnemyMinion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        explosion.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,7 +29,12 @@ public class EnemyMinion : MonoBehaviour
         }
 
         if (health <= 0)
+        {
+            explosion.transform.localPosition = gameObject.transform.localPosition;
+            explosion.SetActive(true);
+            FindObjectOfType<PlayerScore>().AddScore();
             Destroy(gameObject);
+        }
 
     }
 
@@ -36,5 +42,7 @@ public class EnemyMinion : MonoBehaviour
     {
         if (collision.gameObject.name == "Bullet1(Clone)")
             health = health - 250f;
+        if (collision.gameObject.name == "Player")
+            health = 0;
     }
 }
