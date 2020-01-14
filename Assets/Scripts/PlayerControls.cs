@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        explosion.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -52,7 +52,7 @@ public class PlayerControls : MonoBehaviour
         if (health <= 0)
         {
             explosion.transform.localPosition = gameObject.transform.localPosition;
-            explosion.SetActive(true);
+            GameObject explode = Instantiate(explosion, explosion.transform.localPosition, Quaternion.identity);
             Destroy(gameObject);
             FindObjectOfType<GameManager>().EndGame();
         }
