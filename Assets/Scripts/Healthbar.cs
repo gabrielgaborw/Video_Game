@@ -8,6 +8,7 @@ public class Healthbar : MonoBehaviour
 
     void Update()
     {
+        // Displaying the health on screen
         Health.text = "HP   " + HP.ToString();
     }
 

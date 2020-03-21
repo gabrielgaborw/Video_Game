@@ -11,15 +11,10 @@ public class EnemyMinion : MonoBehaviour
     public float lastAttack;
     public float attackDelay = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        // Enemy attack delay
         if (Time.time - lastAttack > attackDelay)
         {
             lastAttack = Time.time;
@@ -28,8 +23,10 @@ public class EnemyMinion : MonoBehaviour
             projectile.GetComponent<Rigidbody>().AddForce(0, 0, -1500 * Time.deltaTime, ForceMode.VelocityChange);
         }
 
+        // Enemy health
         if (health <= 0)
         {
+            // When health is at 0, the death animation will play, as well as adding score to the player
             explosion.transform.localPosition = gameObject.transform.localPosition;
             GameObject explode = Instantiate(explosion, explosion.transform.localPosition, Quaternion.identity);
             FindObjectOfType<PlayerScore>().AddScore();
@@ -38,6 +35,7 @@ public class EnemyMinion : MonoBehaviour
 
     }
 
+    // Detects the collision with the player and the player's projectiles
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Bullet1(Clone)")

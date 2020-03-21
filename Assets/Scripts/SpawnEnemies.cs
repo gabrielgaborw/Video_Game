@@ -19,7 +19,8 @@ public class SpawnEnemies : MonoBehaviour
     {
         while (true)
         {
-            xPos = Random.Range(-20, 20);
+            // Prevents the enemies from spawning out of bounds
+            xPos = Random.Range(-15, 15);
             if (previousPos > xPos + 2 || previousPos < xPos + 2)
             {
                 Instantiate(Enemy, new Vector3(xPos, 1, -2), Quaternion.identity);

@@ -38,6 +38,7 @@ public class PlayerControls : MonoBehaviour
             {
                 lastAttack = Time.time;
 
+                // Instantiates 2 objects from two separate locations(the player's weapons) as projectiles
                 GameObject projectile = Instantiate(bullet, transform.TransformPoint(2f, 0f, 8f), Quaternion.identity) as GameObject;
                 projectile.GetComponent<Rigidbody>().AddForce(0, 0, 2500 * Time.deltaTime, ForceMode.VelocityChange);
 
@@ -47,6 +48,7 @@ public class PlayerControls : MonoBehaviour
         }
         //------------------------------------
 
+        //--------------HEALTH----------------
         FindObjectOfType<Healthbar>().GetHealth(health);
 
         if (health <= 0)
@@ -56,6 +58,7 @@ public class PlayerControls : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<GameManager>().EndGame();
         }
+        //-----------------------------------
     }
 
     private void FixedUpdate()
@@ -63,6 +66,7 @@ public class PlayerControls : MonoBehaviour
         rb.MovePosition(rb.position + inputs * speed * Time.deltaTime);
     }
 
+    // Detects collision with the enemy and the enemy's projectiles 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Bullet2(Clone)")

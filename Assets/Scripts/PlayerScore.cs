@@ -9,6 +9,7 @@ public class PlayerScore : MonoBehaviour
 
     void Update()
     {
+        // Score is added the more you survive as well as defeating more enemies
         score = Kscore + Time.time * 10;
         sc.text = "Score    " + score.ToString("0");
     }
